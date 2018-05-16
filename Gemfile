@@ -7,6 +7,10 @@ end
 
 
 gem 'rails', '~> 5.1.5'
+gem 'bootstrap-sass'
+gem 'rails-ujs'
+gem 'jquery-rails'
+gem 'jquery-ui-rails'
 gem 'sqlite3'
 gem 'puma', '~> 3.7'
 gem 'sass-rails', '~> 5.0'
@@ -20,7 +24,14 @@ gem 'jbuilder', '~> 2.5'
 # gem 'capistrano-rails', group: :development
 
 group :development, :test do
+  gem 'rspec-rails'
+  gem 'factory_bot_rails'
   gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]
+  gem 'pry-rails'
+  gem 'hirb'
+  gem 'hirb-unicode'
+  gem 'better_errors'
+  gem 'binding_of_caller'
   gem 'capybara', '~> 2.13'
   gem 'selenium-webdriver'
 end
