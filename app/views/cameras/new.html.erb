@@ -1,69 +1,29 @@
 <h1>Cameras#new</h1>
 <p>Find me in app/views/cameras/new.html.erb</p>
 
-<button onclick="snapshot()">写真撮影</button>
-<button onclick="startVideo()">ビデオ開始！</button>
-<button onclick="stopVideo()">ビデオ終了！</button>
+<input type="file" name="cameraFile" onchange="onChangeInput();" capture="camera">
 
-<div>
-  <video autoplay width="320" height="240" id="video"></video>
-</div>
-
-<canvas style="display: none" width="320" height="240"></canvas>
-
+<!--<script src="https://code.jquery.com/jquery-3.3.1.js" integrity="sha256-2Kok7MbOyxpgUVvAk/HJ2jigOSYS2auK4Pfzbm7uH60=" crossorigin="anonymous"></script>-->
 <%= javascript_tag do %>
-  function startVideo() {
-    console.info('入出力デバイスを確認してビデオを開始するよ！');
-
-    Promise.resolve().then(function () {
-      return navigator.mediaDevices.enumerateDevices();
-    }).then(function (mediaDeviceInfoList) {
-      console.log('使える入出力デバイスs->', mediaDeviceInfoList);
-
-      var videoDevices = mediaDeviceInfoList.filter(function (deviceInfo) {
-      return deviceInfo.kind == 'videoinput';
-    });
-    if (videoDevices.length < 1) {
-      throw new Error('ビデオの入力デバイスがない、、、、、。');
+  var cameraImageLoader;
+  function init() {
+    if(!window.FileReader) {
+      $("body").empty().append(
+        $("<div />").append("file api not supported.")
+      );
+      return ;
     }
-
-    return navigator.mediaDevices.getUserMedia({
-      audio: false,
-      video: {
-      deviceId: videoDevices[0].deviceId
-      }
-    });
-  }).then(function (mediaStream) {
-      console.log('取得したMediaStream->', mediaStream);
-      videoStreamInUse = mediaStream;
-      document.querySelector('video').src = window.URL.createObjectURL(mediaStream);
-      // 対応していればこっちの方が良い
-      // document.querySelector('video').srcObject = mediaStream;
-    }).catch(function (error) {
-      console.error('ビデオの設定に失敗、、、、', error);
-    });
+    cameraImageLoader = new FileReader()
+    cameraImageLoader.onload = function(event) {
+      $("body").append(
+        $("<img />").attr("src", cameraImageLoader.result)
+      );
+    };
   }
 
-  function stopVideo() {
-    console.info('ビデオを止めるよ！');
-
-    videoStreamInUse.getVideoTracks()[0].stop();
-
-    if (videoStreamInUse.active) {
-      console.error('停止できかた、、、', videoStreamInUse);
-    } else {
-      console.log('停止できたよ！', videoStreamInUse);
-    }
-  }
-
-  function snapshot() {
-    console.info('スナップショットをとるよ！');
-
-    var videoElement = document.querySelector('video');
-    var canvasElement = document.querySelector('canvas');
-    var context = canvasElement.getContext('2d');
-
-    context.drawImage(videoElement, 0, 0, videoElement.width, videoElement.height);
-    document.querySelector('img').src = canvasElement.toDataURL('image/webp');
+  function onChangeInput() {
+    cameraImageLoader.readAsDataURL(
+      document.forms[0].cameraFile.files[0]
+    );
   }
 <% end %>
