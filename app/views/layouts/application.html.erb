@@ -9,6 +9,17 @@
   </head>
 
   <body>
+  <div class="hoge" id="fuga">
+    <ul class="hoge">
+      <li><%= link_to 'Twitterでログイン', '/auth/twitter' %></li>
+    </ul>
+  </div>
+  <div class="hoge">
+    <% if flash[:notice] %>
+      <div class="alert alert-success">
+        <%= flash[:notice] %>
+      </div>
+    <% end %>
     <%= yield %>
   </body>
 </html>
