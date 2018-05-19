@@ -1,7 +1,7 @@
 <h1>Cameras#new</h1>
 <p>Find me in app/views/cameras/new.html.erb</p>
 
-<input type="file" name="cameraFile" onchange="onChangeInput();" capture="camera">
+<input type="file" name="cameraFile" onchange="onChangeInput();">
 
 <!--<script src="https://code.jquery.com/jquery-3.3.1.js" integrity="sha256-2Kok7MbOyxpgUVvAk/HJ2jigOSYS2auK4Pfzbm7uH60=" crossorigin="anonymous"></script>-->
 <%= javascript_tag do %>
@@ -16,7 +16,8 @@
     cameraImageLoader = new FileReader()
     cameraImageLoader.onload = function(event) {
       $("body").append(
-        $("<img />").attr("src", cameraImageLoader.result)
+        $("<img />").attr({src:cameraImageLoader.result, width:"340", height:"340"})
+        // $('#camera').css({'width':'340px', height: '340px'})
       );
     };
   }
