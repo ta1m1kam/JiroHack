@@ -1,4 +1,5 @@
 .idea
+<<<<<<< HEAD
 /ml/model/
 # Ignore bundler config.
 /.bundle
@@ -21,3 +22,6 @@
 /.env
 *.idl
 *.cache
+=======
+/ML/model/
+>>>>>>> parent of b036420... fix dirname
