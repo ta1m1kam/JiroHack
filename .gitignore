@@ -19,5 +19,5 @@
 .byebug_history
 
 /.env
-*.idl
+*.iml
 *.cache
