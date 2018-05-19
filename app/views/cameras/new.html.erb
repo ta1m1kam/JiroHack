@@ -1,0 +1,21 @@
+<h1>Cameras#new</h1>
+<p>Find me in app/views/cameras/new.html.erb</p>
+
+
+<div>
+  <video id="video"></video>
+</div>
+
+<%= javascript_tag do %>
+  var stream;
+  var video;
+  navigator.mediaDevices.getUserMedia({video: true, audio: false}).then(function(stream) {
+    stream = stream;
+    video = document.getElementById('video');
+    video.src = window.URL.createObjectURL(stream);
+    video.play();
+  }).catch(function (error) {
+    console.error('mediaDevice.getUserMedia() errpr:', error);
+    return;
+  });
+<% end %>
