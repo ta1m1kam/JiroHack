@@ -1,0 +1,82 @@
+  [1m[35m (0.4ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  [1m[35m (1.9ms)[0m  [1m[35mCREATE TABLE "schema_migrations" ("version" varchar NOT NULL PRIMARY KEY)[0m
+  [1m[35m (0.8ms)[0m  [1m[35mCREATE TABLE "ar_internal_metadata" ("key" varchar NOT NULL PRIMARY KEY, "value" varchar, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL)[0m
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Migrating to CreateUsers (20180519124707)
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.3ms)[0m  [1m[35mCREATE TABLE "users" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "provider" varchar, "uid" varchar, "nickname" varchar, "image_url" varchar, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL)[0m
+  [1m[35mSQL (0.1ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES (?)[0m  [["version", "20180519124707"]]
+  [1m[35m (1.2ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mActiveRecord::InternalMetadata Load (0.1ms)[0m  [1m[34mSELECT  "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = ? LIMIT ?[0m  [["key", "environment"], ["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35mSQL (0.3ms)[0m  [1m[32mINSERT INTO "ar_internal_metadata" ("key", "value", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["key", "environment"], ["value", "development"], ["created_at", "2018-05-19 15:06:02.325610"], ["updated_at", "2018-05-19 15:06:02.325610"]]
+  [1m[35m (1.2ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Started GET "/" for 127.0.0.1 at 2018-05-20 00:06:32 +0900
+  [1m[35m (0.6ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by HomeController#top as HTML
+  Rendering home/top.html.erb within layouts/application
+  Rendered home/top.html.erb within layouts/application (1.4ms)
+Completed 200 OK in 735ms (Views: 733.2ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/auth/twitter" for 127.0.0.1 at 2018-05-20 00:09:44 +0900
+
+OAuth::Unauthorized - 400 Bad Request:
+
+Started POST "/__better_errors/e3f76a147777a51f/variables" for 127.0.0.1 at 2018-05-20 00:09:45 +0900
+Started GET "/" for 127.0.0.1 at 2018-05-20 00:12:25 +0900
+Processing by HomeController#top as HTML
+  Rendering home/top.html.erb within layouts/application
+  Rendered home/top.html.erb within layouts/application (0.3ms)
+Completed 200 OK in 28ms (Views: 25.7ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/" for 127.0.0.1 at 2018-05-20 00:12:26 +0900
+Processing by HomeController#top as HTML
+  Rendering home/top.html.erb within layouts/application
+  Rendered home/top.html.erb within layouts/application (0.3ms)
+Completed 200 OK in 34ms (Views: 30.3ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/auth/twitter" for 127.0.0.1 at 2018-05-20 00:12:28 +0900
+
+OAuth::Unauthorized - 400 Bad Request:
+
+Started POST "/__better_errors/ce5fe4ea4eafde2c/variables" for 127.0.0.1 at 2018-05-20 00:12:28 +0900
+Started GET "/" for 127.0.0.1 at 2018-05-20 00:12:32 +0900
+Processing by HomeController#top as HTML
+  Rendering home/top.html.erb within layouts/application
+  Rendered home/top.html.erb within layouts/application (0.3ms)
+Completed 200 OK in 39ms (Views: 36.8ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/" for 127.0.0.1 at 2018-05-20 00:12:44 +0900
+  [1m[35m (0.4ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by HomeController#top as HTML
+  Rendering home/top.html.erb within layouts/application
+  Rendered home/top.html.erb within layouts/application (1.1ms)
+Completed 200 OK in 211ms (Views: 209.3ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/auth/twitter" for 127.0.0.1 at 2018-05-20 00:12:46 +0900
+Started GET "/auth/twitter" for 127.0.0.1 at 2018-05-20 00:12:46 +0900
+Started GET "/auth/twitter/callback?oauth_token=7JM6zgAAAAAA6MhXAAABY3j11RE&oauth_verifier=VEp3sY13k0KDuupSauKxIzVgR08YA7Q3" for 127.0.0.1 at 2018-05-20 00:12:50 +0900
+Processing by SessionsController#create as HTML
+  Parameters: {"oauth_token"=>"7JM6zgAAAAAA6MhXAAABY3j11RE", "oauth_verifier"=>"VEp3sY13k0KDuupSauKxIzVgR08YA7Q3", "provider"=>"twitter"}
+  [1m[36mUser Load (1.1ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."provider" = ? AND "users"."uid" = ? LIMIT ?[0m  [["provider", "twitter"], ["uid", "514081197"], ["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35mSQL (2.1ms)[0m  [1m[32mINSERT INTO "users" ("provider", "uid", "nickname", "image_url", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?)[0m  [["provider", "twitter"], ["uid", "514081197"], ["nickname", "saissamu0108"], ["image_url", "http://pbs.twimg.com/profile_images/915900916737249281/cMMpJdtK_normal.jpg"], ["created_at", "2018-05-19 15:12:51.705314"], ["updated_at", "2018-05-19 15:12:51.705314"]]
+  [1m[35m (1.2ms)[0m  [1m[36mcommit transaction[0m
+Redirected to http://localhost:3000/
+Completed 302 Found in 19ms (ActiveRecord: 5.4ms)
+
+
+Started GET "/" for 127.0.0.1 at 2018-05-20 00:12:51 +0900
+Processing by HomeController#top as HTML
+  Rendering home/top.html.erb within layouts/application
+  Rendered home/top.html.erb within layouts/application (0.3ms)
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+Completed 200 OK in 30ms (Views: 28.7ms | ActiveRecord: 0.2ms)
+
+
