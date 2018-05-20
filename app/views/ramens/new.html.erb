@@ -1,5 +1,5 @@
-<h1>Cameras#new</h1>
-<p>Find me in app/views/cameras/new.html.erb</p>
+<h1>Ramens#new</h1>
+<p>Find me in app/views/ramens/new.html.erb</p>
 
 <input type="file" name="cameraFile" onchange="onChangeInput();">
 
@@ -12,13 +12,13 @@
       $("body").empty().append(
         $("<div />").append("file api not supported.")
       );
-      return;
+    return;
     }
     cameraImageLoader = new FileReader()
     cameraImageLoader.onload = function(event) {
       $("body").append(
-        $("<img />").attr("src", cameraImageLoader.result)
-        // $('#camera').css({'width':'340px', height: '340px'})
+      $("<img />").attr("src", cameraImageLoader.result)
+      // $('#camera').css({'width':'340px', height: '340px'})
       );
     };
   }
