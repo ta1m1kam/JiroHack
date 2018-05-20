@@ -3,20 +3,21 @@
 
 <input type="file" name="cameraFile" onchange="onChangeInput();">
 
-<!--<script src="https://code.jquery.com/jquery-3.3.1.js" integrity="sha256-2Kok7MbOyxpgUVvAk/HJ2jigOSYS2auK4Pfzbm7uH60=" crossorigin="anonymous"></script>-->
+<script src="https://code.jquery.com/jquery-3.3.1.js" integrity="sha256-2Kok7MbOyxpgUVvAk/HJ2jigOSYS2auK4Pfzbm7uH60=" crossorigin="anonymous"></script>
 <%= javascript_tag do %>
+  $(document).ready(init);
   var cameraImageLoader;
   function init() {
     if(!window.FileReader) {
       $("body").empty().append(
         $("<div />").append("file api not supported.")
       );
-      return ;
+      return;
     }
     cameraImageLoader = new FileReader()
     cameraImageLoader.onload = function(event) {
       $("body").append(
-        $("<img />").attr({src:cameraImageLoader.result, width:"340", height:"340"})
+        $("<img />").attr("src", cameraImageLoader.result)
         // $('#camera').css({'width':'340px', height: '340px'})
       );
     };
@@ -25,6 +26,10 @@
   function onChangeInput() {
     cameraImageLoader.readAsDataURL(
       document.forms[0].cameraFile.files[0]
+    );
+    $("body").append(
+      $("<img /").attr("src", cameraImageLoader.result)
+    // $('#camera').css({'width':'340px', height: '340px'})
     );
   }
 <% end %>
