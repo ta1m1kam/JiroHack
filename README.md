@@ -20,4 +20,8 @@ gem 'dotenv-rails'
 
 `app/`以下に`.env`ファイルを作成し、TwitterのAPI_KEYとAPI_SECRET_KEYを記入する。
 
-
+### Railsサーバー起動
+これはスマホ用のWebアプリケーションであるのでローカルでは以下のように起動すること
+```
+$ bundle exec rails s -b <LANのIPアドレス>
+```
