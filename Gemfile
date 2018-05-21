@@ -24,6 +24,9 @@ gem 'omniauth'
 gem 'omniauth-twitter'
 gem 'dotenv-rails'
 
+gem 'carrierwave'
+gem 'mini_magick'
+
 # gem 'redis', '~> 4.0'
 # gem 'bcrypt', '~> 3.1.7'
 # gem 'capistrano-rails', group: :development
