@@ -24,7 +24,8 @@ gem 'dotenv-rails'
 - 実行コマンド
 ```
 $ curl -X POST -F image=@<img/to/path.jpg> 'http://localhost:5000/predict'
-=======
+```
+
 ### Railsサーバー起動
 これはスマホ用のWebアプリケーションであるのでローカルでは以下のように起動すること
 ```
