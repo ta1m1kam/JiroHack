@@ -5,4 +5,5 @@ Rails.application.routes.draw do
   get 'home/contact'
   get '/auth/:provider/callback', to: 'sessions#create'
   get '/logout', to: 'sessions#destroy'
+  resources :ramens
 end
