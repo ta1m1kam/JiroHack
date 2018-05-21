@@ -9,6 +9,7 @@ import io
 import numpy as np
 from PIL import Image
 import flask
+import wget
 
 app = flask.Flask(__name__)
 model = None
@@ -19,6 +20,8 @@ def get_model():
     if not os.path.exists(model_path):
         input_tensor = Input(shape=(224,224,3))
         model = VGG16(weights='imagenet',include_top=True,input_tensor=input_tensor)
+        # wget.download('https://url', model_path)
+        # model = load_model(model_path)
         model.save(model_path)
     else:
         model = load_model(model_path)

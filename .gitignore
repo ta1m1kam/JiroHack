@@ -23,4 +23,4 @@
 *.cache
 ./ml/twikey.py
 .DS_Store
-./ml/img
+./ml/img/*.jpg
