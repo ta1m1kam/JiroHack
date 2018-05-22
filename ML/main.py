@@ -9,7 +9,7 @@ import io
 import numpy as np
 from PIL import Image
 import flask
-import wget
+import subprocess
 
 app = flask.Flask(__name__)
 model = None
@@ -18,10 +18,12 @@ def get_model():
     model_path = "./model/vgg16.h5py"
     global model
     if not os.path.exists(model_path):
-        input_tensor = Input(shape=(224,224,3))
-        model = VGG16(weights='imagenet',include_top=True,input_tensor=input_tensor)
-        # wget.download('https://url', model_path)
-        # model = load_model(model_path)
+        # input_tensor = Input(shape=(224,224,3))
+        # model = VGG16(weights='imagenet',include_top=True,input_tensor=input_tensor)
+        code = subprocess.check_output('curl -sc /tmp/cookie \'https://drive.google.com/uc?export=download&id=11DRGCtOfm3CafFQnhk5tvHLV06NG0TaA\' > /dev/null && awk \'/_warning_/ {print $NF}\' /tmp/cookie', shell=True)
+        code = code.decode().rstrip()
+        subprocess.call('curl -Lb /tmp/cookie "https://drive.google.com/uc?export=download&confirm={}&id=11DRGCtOfm3CafFQnhk5tvHLV06NG0TaA" -o {}'.format(code, model_path), shell=True)
+        model = load_model(model_path)
         model.save(model_path)
     else:
         model = load_model(model_path)
