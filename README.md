@@ -25,3 +25,9 @@ gem 'dotenv-rails'
 ```
 $ curl -X POST -F image=@<img/to/path.jpg> 'http://localhost:5000/predict'
 ```
+
+### Railsサーバー起動
+これはスマホ用のWebアプリケーションであるのでローカルでは以下のように起動すること
+```
+$ bundle exec rails s -b <LANのIPアドレス>
+```
