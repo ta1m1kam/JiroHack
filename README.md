@@ -21,7 +21,7 @@ gem 'dotenv-rails'
 `app/`以下に`.env`ファイルを作成し、TwitterのAPI_KEYとAPI_SECRET_KEYを記入する。
 
 # API(flask)
-`./model`にmodel設置（拡張子.h5py）
+`ML/model`にmodel設置（拡張子.h5py）
 - 実行コマンド
 ```
 $ curl -X POST -F image=@<img/to/path.jpg> 'http://localhost:5000/predict'
