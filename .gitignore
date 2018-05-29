@@ -21,3 +21,6 @@
 /.env
 *.iml
 *.cache
+./ml/twikey.py
+.DS_Store
+/ml/img
