@@ -27,6 +27,9 @@ gem 'dotenv-rails'
 gem 'carrierwave'
 gem 'mini_magick'
 
+# twitter投稿
+gem 'twitter'
+
 # gem 'redis', '~> 4.0'
 # gem 'bcrypt', '~> 3.1.7'
 # gem 'capistrano-rails', group: :development

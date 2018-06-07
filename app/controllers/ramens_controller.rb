@@ -3,6 +3,9 @@ class RamensController < ApplicationController
 
   def show
     @ramen = Ramen.find(params[:id])
+    msg =  "#俺の二郎 ##{@ramen.shop_name} #ましましクーポン"
+    # binding.pry
+    TwitterAPI.new.update(msg, "/Users/mikamitaiga/Desktop/Desktop_temp/Programing/Vue-p/JiroHack/public#{@ramen.image_url.url}")
   end
 
   def new
