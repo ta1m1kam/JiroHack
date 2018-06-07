@@ -2,6 +2,7 @@
 <!--<p>Find me in app/views/ramens/new.html.erb</p>-->
 <div class="select">
   <%= form_for(@ramen, url: { action: 'create'}) do |f| %>
+    <%= render 'error_messages' %>
     <label for="ramen_shop_name">お店の名前</label><br>
     <%= f.text_field :shop_name %>
     <br>
@@ -15,6 +16,7 @@
       <br>
 
     <br>
+    <p>※Twitterに投稿されます！</p>
     <%= f.submit '作成' , class: 'btn btn-primary' %>
   <% end %>
 </div>
