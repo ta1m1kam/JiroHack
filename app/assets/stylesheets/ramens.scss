@@ -1,3 +1,22 @@
-// Place all the styles related to the ramens controller here.
-// They will automatically be included in application.css.
-// You can use Sass (SCSS) here: http://sass-lang.com/
+.select {
+  text-align: center;
+  .btn{
+    margin-top: 200px;
+  }
+}
+
+.upload-image {
+  .file-input {
+    display: none;
+  }
+  text-align: center;
+  vertical-align: middle;
+  //display: table-cell;
+  width: 50%;
+  height: 200px;
+  padding: 0.2em 0.5em;
+  margin: 0 auto;
+  //background: #F8CE12;
+  //box-shadow: 0px 0px 0px 10px #F8CE12;
+  //border: dashed 2px white;
+}
