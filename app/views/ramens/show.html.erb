@@ -1,5 +1,7 @@
 <%= @ramen.shop_name %>
+<%= image_tag @ramen.image_url.url , size:"128x128" %>
 <%= image_tag @ramen.image_url.url , id: "ramen" , hidden: "hidden" %>
+<label id="predict-label"></label>
 
 
 <script type="text/javascript" charset="utf-8">
@@ -26,6 +28,7 @@
       success: function (data, dataType) {
         //非同期で通信成功時に読み出される [200 OK 時]
         console.log('Success', data);
+        window.predict = data
       },
       error: function (XMLHttpRequest, textStatus, errorThrown) {
         //非同期で通信失敗時に読み出される
@@ -38,6 +41,10 @@
     var img = document.getElementById('ramen');
     var base64 = ImageToBase64(img, "image/jpg");
     send_img(base64)
+    const target = document.getElementById("predict-label")
+    setTimeout(() => { // 時間のかかる処理
+      target.innerText = window.predict.predictions[0].label
+    }, 1500)
     console.log(base64)
   })();
 

@@ -1,2 +1,14 @@
-<h1>クーポンましまし</h1>
-<p>Find me in app/views/home/top.html.erb</p>
+<div class="top">
+<!--  <h1>クーポンましまし</h1>-->
+<!--  <p>Find me in app/views/home/top.html.erb</p>-->
+  <div class="hoge" id="fuga">
+    <ul class="hoge">
+      <% if logged_in? %>
+        <li><%= link_to 'ログアウト', logout_path %></li>
+        <li><%= image_tag(current_user.image_url) %></li>
+      <% else %>
+        <li><%= link_to 'Twitterでログイン', '/auth/twitter' %></li>
+      <% end %>
+    </ul>
+  </div>
+</div>
