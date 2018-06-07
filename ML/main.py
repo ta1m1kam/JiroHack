@@ -4,14 +4,18 @@ from keras.applications.vgg16 import VGG16,preprocess_input,decode_predictions
 from keras.optimizers import SGD
 from keras.preprocessing import image
 import os
+import base64
 import sys
 import io
 import numpy as np
 from PIL import Image
 import flask
+from flask import Flask, request, abort, make_response, current_app, jsonify
+from flask_cors import CORS, cross_origin
 import subprocess
 
 app = flask.Flask(__name__)
+CORS(app)
 model = None
 
 def get_model():
@@ -39,26 +43,26 @@ def prepare_img(img, target_size=(224,224)):
 
     return x
 
-@app.route("/predict", methods=["POST"])
+@app.route('/predict', methods=["POST"])
 def predict():
     data = {"success": False}
-    if flask.request.method == "POST":
-        if flask.request.files.get("image"):
-            image = flask.request.files["image"].read()
-            image = Image.open(io.BytesIO(image))
+    enc_data  = flask.request.form['img']
+    dec_data = base64.b64decode( enc_data.split(',')[1] )
 
-            image = prepare_img(image)
+    # image = flask.request.files["image"].read()
+    image = Image.open(io.BytesIO(dec_data)).convert("RGB")
+    # import pdb; pdb.set_trace()
+    image = prepare_img(image)
 
-            preds = model.predict(image)
-            results = decode_predictions(preds)
-            data["predictions"] = []
+    preds = model.predict(image)
+    results = decode_predictions(preds)
+    data["predictions"] = []
 
-            for (imagenetID, label, prob) in results[0]:
-                r = {"label": label, "probability": float(prob)}
-                data["predictions"].append(r)
-
-            data["success"] = True
-
+    for (imagenetID, label, prob) in results[0]:
+        r = {"label": label, "probability": float(prob)}
+        data["predictions"].append(r)
+        data["success"] = True
+    print(data)
     return flask.jsonify(data)
 
 # def create_last_conv2d_fine_tuning(classes):
@@ -86,7 +90,7 @@ def predict():
 if __name__ == "__main__":
     print("Loading Keras model and Flask starting server...\n")
     get_model()
-    app.run()
+    app.run(host='0.0.0.0', port=80)
     # model = get_model()
     # model.summary()
 

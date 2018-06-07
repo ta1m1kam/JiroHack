@@ -1,2 +1,46 @@
 <%= @ramen.shop_name %>
-<%= image_tag @ramen.image_url.url %>
+<%= image_tag @ramen.image_url.url , id: "ramen" %>
+
+
+<script type="text/javascript" charset="utf-8">
+  function ImageToBase64(img, mine_type) {
+    var canvas = document.createElement('canvas')
+    canvas.width = img.width
+    canvas.height = img.height
+    var ctx = canvas.getContext('2d');
+    ctx.drawImage(img, 0, 0);
+    return canvas.toDataURL(mine_type);
+  }
+
+  function send_img(base64) {
+    var fData = new FormData();
+    fData.append('img', base64);
+
+    $.ajax({
+      //画像処理サーバーに返す場合
+      url: 'http://0.0.0.0:80/predict',
+      type: 'POST',
+      data: fData,
+      contentType: false,
+      processData: false,
+      success: function (data, dataType) {
+        //非同期で通信成功時に読み出される [200 OK 時]
+        console.log('Success', data);
+      },
+      error: function (XMLHttpRequest, textStatus, errorThrown) {
+        //非同期で通信失敗時に読み出される
+        console.log('Error : ' + errorThrown);
+      }
+    });
+  }
+
+  (window.onload = function () {
+    var img = document.getElementById('ramen');
+    var base64 = ImageToBase64(img, "image/jpg");
+    send_img(base64)
+    console.log(base64)
+  })();
+
+
+
+</script>
