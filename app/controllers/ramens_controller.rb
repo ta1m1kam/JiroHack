@@ -5,7 +5,10 @@ class RamensController < ApplicationController
     @ramen = Ramen.find(params[:id])
     msg =  "#俺の二郎 ##{@ramen.shop_name} #ましましクーポン"
     # binding.pry
-    TwitterAPI.new.update(msg, "/Users/mikamitaiga/Desktop/Desktop_temp/Programing/Vue-p/JiroHack/public#{@ramen.image_url.url}")
+    unless @ramen.post_flag
+      TwitterAPI.new.update(msg, "public#{@ramen.image_url.url}")
+      @ramen.update(post_flag: true)
+    end
   end
 
   def new
