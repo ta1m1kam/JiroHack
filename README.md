@@ -20,6 +20,12 @@ gem 'dotenv-rails'
 
 `app/`以下に`.env`ファイルを作成し、TwitterのAPI_KEYとAPI_SECRET_KEYを記入する。
 
+### Twitter Gem
+- Twitter投稿用環境変数が必要
+Omniauthと同様に `.env` にTwitterのAccessTokenとAccessTokenSecretを記入する
+
+#### `ramen_controller`の#showで自動でTwitterに投稿されるので注意すること
+
 # API(flask)
 `ML/model`にmodel設置（拡張子.h5py）
 
