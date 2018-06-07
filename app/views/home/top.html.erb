@@ -1,8 +1,10 @@
 <div class="top">
-  <%= link_to('/auth/twitter') do %>
-    <div class="twitter-back">
-      <i class="fab fa-twitter fa-2x twitter-button"></i>
-      Twitterログイン
-    </div>
+  <% unless logged_in? %>
+    <%= link_to('/auth/twitter') do %>
+      <div class="twitter-back">
+        <i class="fab fa-twitter fa-2x twitter-button"></i>
+        Twitterログイン
+      </div>
+    <% end %>
   <% end %>
 </div>

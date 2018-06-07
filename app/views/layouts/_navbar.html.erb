@@ -5,7 +5,5 @@
     <%= link_to '俺の二郎', index_my_ramens_path %>
     <%= link_to 'ログアウト', logout_path %>
     <%= image_tag(current_user.image_url) %>
-  <% else %>
-    <%= link_to 'Twitterでログイン', '/auth/twitter' %>
   <% end %>
 </nav>
