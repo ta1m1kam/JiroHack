@@ -24,3 +24,5 @@
 ./ml/twikey.py
 .DS_Store
 /ml/img
+
+/public/uploads/
