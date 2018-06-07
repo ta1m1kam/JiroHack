@@ -15,6 +15,9 @@ body {
   background-attachment: fixed;
   background-size: cover;
   background-color: #F8CE12;
+  a{
+    text-decoration: none;
+  }
 }
 
 
@@ -28,4 +31,12 @@ body {
   color: white;
   margin-left: 10px;
   box-shadow: 0 0 8px gray;
+  &:hover{
+    background-color: #3190E5;
+  }
+}
+
+.twitter-button {
+  padding: 5px 10px 5px 1px;
+  color: white;
 }
