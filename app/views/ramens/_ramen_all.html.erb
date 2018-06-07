@@ -1,0 +1,7 @@
+<ul>
+  <% @ramens.each do |ramen| %>
+    <% if ramen.image_url.url %>
+      <li><%= image_tag ramen.image_url.url , size:"128x128" %> <%= ramen.shop_name %></li>
+    <% end %>
+  <% end %>
+</ul>

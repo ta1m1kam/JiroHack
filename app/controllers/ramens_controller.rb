@@ -5,6 +5,10 @@ class RamensController < ApplicationController
     @ramens = Ramen.all
   end
 
+  def index_my
+    @ramens = current_user.created_ramens
+  end
+
   def show
     @ramen = Ramen.find(params[:id])
     msg =  "#俺の二郎 ##{@ramen.shop_name} #ましましクーポン"
