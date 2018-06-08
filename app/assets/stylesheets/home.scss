@@ -9,12 +9,22 @@ body {
   margin: 0;
   padding:   120px 0 650px 0;
   //width: 100%;
-  background-image: url("/jiro-back.png");
+  //background-image: url("/jiro-back.png");
   background-position: center center;
   background-repeat: no-repeat;
   background-attachment: fixed;
   background-size: cover;
   background-color: #F8CE12;
+  text-align: center;
+  h2 {
+    span {
+      color: red;
+    }
+    img {
+      display: inline;
+      border: none;
+    }
+  }
   a{
     text-decoration: none;
   }
@@ -31,6 +41,11 @@ body {
   color: white;
   margin-left: 10px;
   box-shadow: 0 0 8px gray;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  margin: auto;
   &:hover{
     background-color: #3190E5;
   }
