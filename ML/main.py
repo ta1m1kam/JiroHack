@@ -5,6 +5,7 @@ from keras.optimizers import SGD
 from keras.preprocessing import image
 from keras.preprocessing.image import array_to_img, img_to_array, list_pictures, load_img
 from keras.utils import np_utils
+from keras.models import model_from_json
 from keras.callbacks import ModelCheckpoint
 from keras.callbacks import EarlyStopping
 import os
@@ -86,15 +87,17 @@ def prepare_train():
     X_train, X_test, y_train, y_test = train_test_split(X, Y, test_size=0.33, random_state=111)
     return X_train,X_test,y_train,y_test
 
+def get_original_model():
+    global model
+    model = model_from_json(open("model/model.json").read())
+    model.load_weights('model.ep10.h5py')
+    model._make_predict_function()
+
 @app.route('/predict', methods=["POST"])
 def predict():
     data = {"success": False}
-    # global model
     ## API 部分
-    from keras.models import model_from_json
-    model = model_from_json(open("model/model.json").read())
-    model.load_weights('model.ep10.h5py')
-    print(type(model))
+    #print(type(model))
     ## Rails
     enc_data  = flask.request.form['img']
     dec_data = base64.b64decode( enc_data.split(',')[1] )
@@ -127,10 +130,11 @@ def predict():
     #     data["success"] = True
     data["predictions"] = []
     for label,i in enumerate(preds[0]):
-        score = str(int(float(i) * 500))[:-1] + "0"
+        score = str(int(float(i) * 200))[:-1] + "0"
         r = {"label": label, "probability": score}
         data["predictions"].append(r)
         data["success"] = True
+    print()
     print(data)
     return flask.jsonify(data)
 
@@ -163,6 +167,8 @@ def create_last_conv2d_fine_tuning(classes):
 if __name__ == "__main__":
     print("Loading Keras model and Flask starting server...\n")
     #get_model()
+
+    get_original_model()
     app.run(host='0.0.0.0', port=80)
     # app.run()
 
