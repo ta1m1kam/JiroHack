@@ -1,7 +1,18 @@
-<%= @ramen.shop_name %>
-<%= image_tag @ramen.image_url.url , size:"128x128" %>
-<%= image_tag @ramen.image_url.url , id: "ramen" , hidden: "hidden" %>
-<label id="predict-label"></label>
+
+<div class="coupon">
+  <h2>あなたが<font color="red"><%= @ramen.shop_name %></font>で
+    <br>使えるクーポン</h2>
+  <h3>※次回以降利用できます</h3>
+  <label id="predict-label"></label>円引き
+  <br>
+  あなたが投稿した写真
+  <%= image_tag @ramen.image_url, size: "400x400" %>
+  <%= image_tag @ramen.image_url.url, id: "ramen", hidden: "hidden" %>
+  <label id="shop">お店名：</label><span><%= @ramen.shop_name %></span>
+  来店日<%= @ramen.created_at.strftime("%Y年%m月%d日 %H時%M分") %>
+</div>
+
+
 
 
 <script type="text/javascript" charset="utf-8">
@@ -44,10 +55,7 @@
     const target = document.getElementById("predict-label")
     setTimeout(() => { // 時間のかかる処理
       target.innerText = window.predict.predictions[0].label
-    }, 1500)
+    }, 2000)
     console.log(base64)
   })();
-
-
-
 </script>

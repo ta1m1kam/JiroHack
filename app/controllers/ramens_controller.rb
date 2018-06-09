@@ -31,6 +31,10 @@ class RamensController < ApplicationController
     end
   end
 
+  def coupon
+
+  end
+
   private
     def ramen_params
       params.require(:ramen).permit(
