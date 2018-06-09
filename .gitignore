@@ -1,5 +1,6 @@
 .idea
 /ml/model/
+/ml/__pycache__
 # Ignore bundler config.
 /.bundle
 
@@ -21,8 +22,15 @@
 /.env
 *.iml
 *.cache
-./ml/twikey.py
+/ml/twikey.py
 .DS_Store
 /ml/img
+/ml/ramen
+/ml/ラーメン二郎
+/ml/model
+/vendor
+/ML/model
+/ML/model.ep10.h5py
+
 
 /public/uploads/

@@ -60,7 +60,44 @@
   }
 }
 
+// coupon
+.coupon {
+  margin: 0 auto;
+  width: 500px;
+  padding-bottom: 20px;
+  background-color: #F8CE12;
+  text-align: center;
+  min-width: 500px;
+  label#predict-label{
+    font-size: 80px;
+  }
+  label#shop{
+    font-size: 20px;
+  }
+  span {
+    font-size: 30px;
+  }
+  h2 {
+    padding-top: 60px;
+    font-size: 3em;
+  }
+  h3 {
+    font-size: 1.2em;
+    color: red;
+  }
+  img {
+    margin: 0 auto;
+  }
+}
 
+
+// ramen all
+.ramen-all {
+  text-align: center;
+  img{
+    margin: 0 auto;
+  }
+}
 
 
 // Form Error
