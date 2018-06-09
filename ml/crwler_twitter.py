@@ -7,18 +7,19 @@ import math
 import imgutil
 import twikey
 
-# image save path
-directory = "./img"
-imgutil.mkdir(directory)
 
 url = "https://api.twitter.com/1.1/search/tweets.json"
 
 # parameters
-query = "ramen"
+query = "ラーメン二郎"
 lang = "ja"
 result_type="mixed" # 最新のツイートを取得
 count = 100 # 1回あたりの最大取得ツイート数（最大100）
 max_id = ''
+
+# image save path
+directory = "./" + query
+imgutil.mkdir(directory)
 
 total_count = 1000 # 取得画像の最大数
 offset = math.floor(total_count/count) # ループ回数
