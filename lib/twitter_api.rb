@@ -3,13 +3,16 @@ require 'twitter'
 class TwitterAPI
   attr_reader :client
 
-  def initialize
+  def initialize(current_user)
     @client =
       Twitter::REST::Client.new do |config|
         config.consumer_key        = ENV["TWITTER_API_KEY"]
         config.consumer_secret     = ENV["TWITTER_API_SECRET"]
-        config.access_token        = ENV["TWITTER_ACCESS_TOKEN"]
-        config.access_token_secret = ENV["TWITTER_ACCESS_SECRET"]
+        user_auth = current_user
+        # config.access_token        = ENV["TWITTER_ACCESS_TOKEN"]
+        # config.access_token_secret = ENV["TWITTER_ACCESS_SECRET"]
+        config.access_token = user_auth.token
+        config.access_token_secret = user_auth.secret
       end
   end
 
