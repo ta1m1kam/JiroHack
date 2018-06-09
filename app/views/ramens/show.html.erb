@@ -16,6 +16,15 @@
 
 
 <script type="text/javascript" charset="utf-8">
+  function sleep(waitMsec) {
+
+    var startMsec = new Date();
+
+    // 指定ミリ秒間、空ループ。CPUは常にビジー。
+    while (new Date() - startMsec < waitMsec) ;
+
+  }
+
   function ImageToBase64(img, mine_type) {
     var canvas = document.createElement('canvas')
     canvas.width = img.width
@@ -47,15 +56,15 @@
       }
     });
   }
-
   (window.onload = function () {
     var img = document.getElementById('ramen');
     var base64 = ImageToBase64(img, "image/jpg");
     send_img(base64)
     const target = document.getElementById("predict-label")
     setTimeout(() => { // 時間のかかる処理
-      target.innerText = window.predict.predictions[0].label
-    }, 2000)
+      target.innerText = window.predict.predictions[0].probability
+      sleep(5000);
+    }, 5000)
     console.log(base64)
   })();
 </script>
