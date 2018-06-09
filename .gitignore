@@ -1,6 +1,9 @@
 .idea
 /ml/model/
+/ml/*.h5py
 /ml/__pycache__
+/ml/ordinary
+/ml/jiro
 # Ignore bundler config.
 /.bundle
 
