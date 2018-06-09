@@ -5,6 +5,8 @@ from keras.optimizers import SGD
 from keras.preprocessing import image
 from keras.preprocessing.image import array_to_img, img_to_array, list_pictures, load_img
 from keras.utils import np_utils
+from keras.callbacks import ModelCheckpoint
+from keras.callbacks import EarlyStopping
 import os
 import base64
 import sys
@@ -131,8 +133,11 @@ if __name__ == "__main__":
     model = create_last_conv2d_fine_tuning(2)
     # 実行。出力はなしで設定(verbose=0)。
     X_train, X_test, y_train, y_test = prepare_train()
-    history = model.fit(X_train, y_train, batch_size=5, epochs=100,
-                    validation_data = (X_test, y_test), verbose = 1)
+    callbacks = []
+    callbacks.append(EarlyStopping("val_loss", patience=1))
+    callbacks.append(ModelCheckpoint(filepath="model.ep{epoch:02d}.h5",monitor='val_loss'))
+    history = model.fit(X_train, y_train, batch_size=5, epochs=20,
+                    validation_data = (X_test, y_test), verbose = 1,callbacks=callbacks)
 
 
 
