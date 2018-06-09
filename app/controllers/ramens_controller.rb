@@ -11,7 +11,7 @@ class RamensController < ApplicationController
 
   def show
     @ramen = Ramen.find(params[:id])
-    msg =  "#俺の二郎 ##{@ramen.shop_name} #ましましクーポン"
+    msg =  "#俺の二郎 ##{@ramen.shop_name} #ましましクーポン #ジロッカソン"
     unless @ramen.post_flag
       TwitterAPI.new(current_user).update(msg, "public#{@ramen.image_url.url}")
       @ramen.update(post_flag: true)

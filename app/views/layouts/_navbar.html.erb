@@ -1,6 +1,8 @@
 <nav>
   <% if logged_in? %>
-    <%= image_tag(current_user.image_url) %>
+    <%= link_to(root_path) do %>
+      <%= image_tag(current_user.image_url) %>
+    <% end %>
     <%= link_to '二郎を撮る', new_ramen_path %>
     <%= link_to '全ての二郎', ramens_path %>
     <%= link_to '俺の二郎', index_my_ramens_path %>
