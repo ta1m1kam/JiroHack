@@ -3,9 +3,9 @@
 <div class="select">
   <%= form_for(@ramen, url: { action: 'create'}) do |f| %>
     <%= render 'error_messages' %>
-    <label for="ramen_shop_name">お店の名前</label><br>
-    <%= f.text_field :shop_name %>
+    <%= f.text_field :shop_name ,placeholder: "お店の名前" %>
     <br>
+    <p>※Twitterに投稿されます！</p>
 
       <label for="ramen_image_url" class="upload-image">
         <div class="preview">
@@ -13,13 +13,10 @@
         </div>
         <%= f.file_field :image_url, class:"file-input" %>
       </label>
-      <br>
-
-    <br>
-    <p>※Twitterに投稿されます！</p>
-    <%= f.submit '作成' , class: 'btn btn-primary' %>
+    <%= f.submit '作成', class: 'btn-success' %>
   <% end %>
 </div>
+
 <!--<input type="file" name="cameraFile" onchange="onChangeInput();">-->
 
 
