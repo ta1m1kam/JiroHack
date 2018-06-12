@@ -15,6 +15,7 @@ nav {
   margin: 0;
   height: 100vh;
   padding:   120px 0 150px 0;
+  padding-bottom: 50px;
   //width: 100%;
   //background-image: url("/jiro-back.png");
   background-position: center center;
@@ -23,9 +24,16 @@ nav {
   background-size: cover;
   background-color: #F8CE12;
   text-align: center;
+  h1 {
+    font-family: "Nikukyu";
+  }
   h2 {
-    span {
+    font-family: "Nikukyu";
+    span.red {
       color: red;
+    }
+    h1.article-title {
+      font-family: "Nikukyu" !important;
     }
     img {
       display: inline;
@@ -34,6 +42,11 @@ nav {
   }
   a{
     text-decoration: none;
+  }
+  img {
+    margin-top: 20px;
+    margin: 0 auto;
+    border: none;
   }
 }
 
@@ -63,6 +76,11 @@ nav {
   color: white;
 }
 
+.dex {
+  height: 150px;
+  background-color: #F8CE12;
+}
+
 
 .des1{
   width: 100%;
@@ -81,5 +99,28 @@ nav {
   }
   img {
     margin: 0 auto;
+  }
+}
+
+
+nav {
+  display: flex !important;
+  img {
+    margin-left: 10px;
+  }
+  .collapsible {
+    ul {
+      height: 100%;
+      margin: 0;
+      li {
+        display: inline-grid;
+        vertical-align: middle;
+        &:before{
+          content: none;
+        }
+      }
+    }
+    margin-left: auto;
+    font-size: 20px;
   }
 }

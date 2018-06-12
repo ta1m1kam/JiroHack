@@ -97,6 +97,11 @@
   img{
     margin: 0 auto;
   }
+  li {
+    &:before{
+      content: none;
+    }
+  }
 }
 
 

@@ -1,6 +1,6 @@
 <div class="top">
-  <h2><span>ラーメン</span>二郎<%= image_tag 'jiro.png' , size: "100x100"%></h2>
-  <h1 class="article-title">クーポンましまし</h1>
+  <h2><span class="red">ラーメン</span>じろう<%= image_tag 'jiro.png' , size: "100x100"%></h2>
+  <h1 class="article-title">クーポンマシマシ</h1>
   <% unless logged_in? %>
     <%= link_to('/auth/twitter') do %>
       <div class="twitter-back">
@@ -9,6 +9,10 @@
       </div>
     <% end %>
   <% end %>
+  <%#= image_tag 'z.png', size:"500x500"%>
+</div>
+<div class="dex">
+
 </div>
 <div class="des1">
   <h2>サービスの流れ</h2>
@@ -30,4 +34,11 @@
 <div class="des1">
   <h2>サポーターズのメリット</h2>
   <%= image_tag 'sp.png', size:"800x800"%>
+  <br>
+  <br>
+  <%= link_to(new_ramen_path) do %>
+    <button class="btn-primary">二郎の写真を撮る</button>
+  <% end %>
 </div>
+
+

@@ -64,11 +64,11 @@
       if(window.predict != undefined) {
         target.innerText = window.predict.predictions[0].probability
       } else {
-        var num = Math.round(Math.random() * 200);
-        var str = String(num).slice(0, -1);
-        target.innerText = str + '0'
+        // var num = Math.round(Math.random() * 200);
+        // var str = String(num).slice(0, -1);
+        // target.innerText = str + '0'
       }
-      sleep(5000);
+      sleep(3000);
     }, 0)
     console.log(base64)
   })();

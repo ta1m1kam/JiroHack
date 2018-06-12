@@ -1,11 +1,16 @@
-<nav>
+<nav class="border fixed split-nav">
   <% if logged_in? %>
-    <%= link_to(root_path) do %>
-      <%= image_tag(current_user.image_url) %>
+  <div class="nav-brand">
+    <%= image_tag(current_user.image_url) %>
+  </div>
+  <div class="collapsible">
+    <ul class="inline">
+      <li><%= link_to '二郎を撮る', new_ramen_path %></li>
+      <li><%= link_to '全ての二郎', ramens_path %></li>
+      <li><%= link_to '俺の二郎', index_my_ramens_path %></li>
+      <li><%= link_to 'ログアウト', logout_path %></li>
+    </ul>
+  </div>
     <% end %>
-    <%= link_to '二郎を撮る', new_ramen_path %>
-    <%= link_to '全ての二郎', ramens_path %>
-    <%= link_to '俺の二郎', index_my_ramens_path %>
-    <%= link_to 'ログアウト', logout_path %>
-  <% end %>
 </nav>
+
